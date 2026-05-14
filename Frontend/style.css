@@ -1,0 +1,901 @@
+:root {
+  --primary-color: #6c63ff;
+ --background-color: #f4f0ff;
+  --card-color: #ffffff;
+  --text-color: #111111;
+}
+
+/* DARK THEME */
+.dark-theme {
+  --primary-color: #4f8cff;
+  --background-color: #181818;
+  --card-color: #2c2c2c;
+  --text-color: #ffffff;
+}
+
+/* BEIGE THEME */
+.beige-theme {
+  --primary-color: #c8a97e;
+  --background-color: #f7f1e8;
+  --card-color: #fffaf3;
+  --text-color: #3a2e2e;
+}
+
+
+/* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* BODY BACKGROUND */
+body {
+  min-height: 100vh;
+  background: var(--background-color);
+  color: var(--text-color);
+  transition: 0.3s ease;
+ /*  background: linear-gradient(to bottom, #6fa0c4, #c77ba0); */
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+html, body {
+  height: 100%;
+}
+/* ================= NAVBAR ================= */
+
+#navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: var(--card-color);
+}
+
+/* LOGO */
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+/* CENTER GROUP */
+.nav-center {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex: 1;
+  margin-left: 30px;
+}
+
+/* SEARCH */
+.search-box {
+  display: flex;
+  align-items: center;
+  background: var(--card-color);
+  border-radius: 20px;
+  padding: 3px 10px;
+  height: 30px;
+  width: 200px;
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  background: transparent;
+  color: var(--text-color);
+}
+
+.search-box span {
+  margin-left: 5px;
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+/* LINKS */
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+/* BUTTONS (Login/Register) */
+.nav-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-actions a {
+  padding: 6px 16px;
+  border-radius: 20px;
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-actions a:hover {
+  opacity: 0.9;
+}
+
+/* theme-btn */
+.theme-buttons button {
+  padding: 8px 14px;
+
+  border: none;
+  border-radius: 20px;
+
+  background: #e5e5e5;
+  color: #333;
+
+  cursor: pointer;
+
+  font-weight: 600;
+
+  transition: 0.2s ease;
+}
+
+.theme-buttons button:hover {
+  background: #d6d6d6;
+}
+
+/* ================= NAVBAR IMPROVEMENT ================= */
+
+#navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  background: var(--card-color);
+
+  border-bottom: 1px solid #e5e5e5;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* NAV LINKS */
+
+.nav-links a {
+  color: var(--text-color);
+
+  font-weight: 600;
+
+  transition: 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #5f84b5;
+}
+
+/* LOGIN / PROFILE / LOGOUT BUTTONS */
+
+.nav-actions a,
+.nav-actions button {
+  transition: 0.2s ease;
+
+  font-weight: 600;
+}
+
+.nav-actions a:hover,
+.nav-actions button:hover {
+  transform: translateY(-1px);
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* LOGO */
+
+.logo {
+  color: var(--text-color);
+
+  letter-spacing: 1px;
+}
+/* ================= LOGIN PAGE ================= */
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 80px;
+}
+
+/* CARD */
+.card {
+  background: var(--card-color);
+
+  color: var(--text-color);
+
+  padding: 25px;
+  border-radius: 15px;
+
+  width: 300px;
+  height: 260px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* TITLE */
+.card h2 {
+  margin-bottom: 15px;
+
+  color: var(--text-color);
+}
+
+/* INPUT */
+.card input {
+  width: 100%;
+
+  margin: 8px 0;
+  padding: 10px;
+
+  border-radius: 6px;
+  border: 1px solid #ccc;
+
+  background: var(--background-color);
+
+  color: var(--text-color);
+}
+
+/* INPUT PLACEHOLDER */
+.card input::placeholder {
+  color: #888;
+}
+
+/* BUTTON */
+.card button {
+  width: 100%;
+
+  margin-top: 15px;
+  padding: 10px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: var(--primary-color);
+
+  color: white;
+
+  cursor: pointer;
+
+  font-weight: 600;
+}
+
+.card button:hover {
+  opacity: 0.9;
+}
+
+/* .card {
+  background: #f5f5f5;
+  padding: 25px;
+  border-radius: 15px;
+  width: 300px;
+  height: 260px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
+
+.card h2 {
+  margin-bottom: 15px;
+}
+
+/* .card input {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+} */
+
+.card button {
+  width: 100%;
+  margin-top: 15px;
+}
+
+/* ================= BOOK GRID ================= */
+
+#books-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  padding: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* BOOK CARD */
+.book-card {
+  background: var(--card-color);
+  color: var(--text-color);
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+}
+.rating {
+  margin-top: 10px;
+}
+
+/* All Books - Homepage */
+.books-title {
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+#books-container {
+  display: grid;
+  grid-template-columns: repeat(4, 260px);
+  gap: 30px;
+  justify-content: center;
+  padding: 40px;
+}
+
+.book-card {
+  width: 250px;
+
+  background: var(--card-color);
+  color: var(--text-color);
+
+  border-radius: 16px;
+  padding: 16px;
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.book-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.book-info {
+  margin-top: 16px;
+  text-align: left;
+}
+
+.book-info h3 {
+  margin-bottom: 16px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.book-info p {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.view-btn {
+  margin-top: 15px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 30px;
+  background: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  display: block;
+  margin: 20px auto 0;
+}
+.books-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.books-title {
+  margin-bottom: 40px;
+
+}
+
+/* Hide modal */
+.hidden {
+  display: none !important;
+}
+#modal-image {
+  width: 200px;
+}
+
+
+
+
+/* ================= PROFILE PAGE ================= */
+
+.profile-page {
+  padding: 50px;
+}
+
+#welcome-user {
+  text-align: center;
+  margin-bottom: 50px;
+  font-size: 42px;
+}
+
+.profile-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.profile-box {
+  background: var(--card-color);
+  width: 400px;
+  min-height: 450px;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.profile-box h2 {
+  margin-bottom: 25px;
+}
+
+.book-item {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.book-item img {
+  width: 80px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+/* REMOVE RATING BUTTON */
+
+.remove-rating-btn {
+  margin-top: 10px;
+  padding: 7px 16px;
+
+  border: none;
+  border-radius: 20px;
+
+  background-color: #e5e5e5;
+  color: #333;
+
+  cursor: pointer;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition: 0.2s ease;
+}
+
+.remove-rating-btn:hover {
+  background-color: #d6d6d6;
+}
+
+/* NAVBAR BUTTON */
+.nav-actions button {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 20px;
+  background: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.nav-actions button:hover {
+  background: #4a6fa0;
+}
+
+/* ================= MODAL ================= */
+
+#book-modal {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,0.6);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999;
+}
+
+.modal-content {
+  background: var(--card-color);
+  color: var(--text-color);
+
+  width: 800px;
+  max-width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 20px;
+  padding: 30px;
+  display: flex;
+  gap: 30px;
+  position: relative;
+}
+
+#close-modal {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  border: none;
+  background: none;
+
+  font-size: 24px;
+  cursor: pointer;
+}
+
+#modal-image {
+  width: 280px;
+  height: 400px;
+
+  object-fit: cover;
+
+  border-radius: 12px;
+}
+
+.modal-info {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#modal-title {
+  font-size: 38px;
+}
+
+#modal-author,
+#modal-pages,
+#modal-date,
+#modal-description {
+  font-size: 18px;
+  line-height: 1.5;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+#save-btn {
+  margin-top: 20px;
+
+  width: fit-content;
+
+  padding: 12px 20px;
+
+  border: none;
+  border-radius: 30px;
+
+  background: var(--primary-color);
+  color: white;
+
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.modal-rating {
+  font-size: 28px;
+}
+
+/* Saved-book */
+.saved-book-card {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.saved-book-image {
+  width: 80px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.saved-book-info h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+.saved-book-info p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.saved-divider {
+  border: none;
+  border-top: 1px solid #d9d9d9;
+  margin: 20px 0;
+}
+
+/* Read & remove-btn */
+
+.read-btn,
+.remove-btn {
+  margin-top: 10px;
+  padding: 7px 16px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+/* READ BUTTON */
+.read-btn {
+  background-color: #5f7fb4;
+  color: white;
+  margin-right: 8px;
+}
+
+.read-btn:hover {
+  opacity: 0.9;
+}
+
+/* REMOVE BUTTON */
+.remove-btn {
+  background-color: #e5e5e5;
+  color: #333;
+}
+
+.remove-btn:hover {
+  background-color: #d6d6d6;
+}
+
+/* SORT DROPDOWNS */
+#sort-books,
+#sort-rated-books {
+
+  margin-bottom: 20px;
+
+  padding: 8px 14px;
+
+  border-radius: 10px;
+
+  border: 1px solid #ccc;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+}
+/* Rating */
+#modal-rating {
+  margin-top: 20px;
+}
+
+.star-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+.star {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.star:hover {
+  transform: scale(1.2);
+}
+.rating-text {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+#modal-rating {
+margin-top: 0px;
+}
+
+/* Theme btn */
+
+.theme-section {
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 40px;
+}
+
+.theme-title {
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.theme-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.theme-buttons button {
+  padding: 6px 14px;
+
+  border: none;
+  border-radius: 20px;
+
+  background: #e5e5e5;
+  color: #333;
+
+  cursor: pointer;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition: 0.2s ease;
+}
+
+.theme-buttons button:hover {
+  background: #d6d6d6;
+}
+
+/* role btn ex. super admin */
+.role-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+
+.role-buttons button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.role-buttons button:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+/* ================= ADMIN PANEL ================= */
+#super-admin-btn {
+  cursor: default;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#super-admin-btn:hover {
+  transform: none;
+}
+
+.admin-panel {
+
+  max-width: 500px;
+
+  margin: 30px auto;
+
+  background: var(--card-color);
+
+  padding: 25px;
+
+  border-radius: 16px;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+.admin-panel h2 {
+  text-align: center;
+}
+
+.admin-panel input,
+.admin-panel textarea {
+
+  padding: 10px;
+
+  border-radius: 10px;
+
+  border: 1px solid #ccc;
+
+  font-size: 14px;
+}
+
+.admin-panel textarea {
+
+  min-height: 120px;
+
+  resize: vertical;
+}
+
+.admin-panel button {
+
+  padding: 12px;
+
+  border: none;
+
+  border-radius: 30px;
+
+  background: var(--primary-color);
+
+  color: white;
+
+  cursor: pointer;
+
+  font-weight: bold;
+}
+
+.admin-panel button:hover {
+  opacity: 0.9;
+}
+
+/* Delete book btn */
+.delete-book-btn {
+  margin-top: 15px;
+
+  padding: 10px 18px;
+
+  border: none;
+  border-radius: 30px;
+
+  background: #d9534f;
+
+  color: white;
+
+  cursor: pointer;
+
+  font-weight: bold;
+}
+
+/* ================= FOOTER ================= */
+
+.footer {
+
+  margin-top: 60px;
+
+  padding: 25px;
+
+  text-align: center;
+
+  background: var(--card-color);
+
+  color: var(--text-color);
+
+  border-top: 1px solid #ddd;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}

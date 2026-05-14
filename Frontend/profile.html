@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <div id="navbar">
+
+        <div class="logo">
+            U-READ
+        </div>
+
+        <div class="nav-center">
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+               
+            </div>
+
+        </div>
+
+        <div class="nav-actions">
+
+            <a id="profile-link" href="profile.html">
+                Profile
+            </a>
+
+            <a href="#" id="logout-btn">
+                Logout
+            </a>
+
+        </div>
+
+
+    </div>
+
+    <!-- PROFILE -->
+    <div class="profile-container">
+
+        <h1 id="welcome-user">Welcome</h1>
+
+        <div class="role-buttons">
+
+            <button id="admin-btn">
+                Admin
+            </button>
+
+            <button id="super-admin-btn" class="hidden">
+                👑 Super Admin
+            </button>
+
+        </div>
+
+        <div id="theme-panel" class="theme-section hidden">
+
+            <p class="theme-title">
+                Change your background colors
+            </p>
+
+            <div class="theme-buttons">
+
+                <button class="theme-btn" onclick="setTheme('default')">
+                    Purple
+                </button>
+
+                <button class="theme-btn" onclick="setTheme('dark-theme')">
+                    Dark
+                </button>
+
+                <button class="theme-btn" onclick="setTheme('beige-theme')">
+                    Beige
+                </button>
+
+            </div>
+
+        </div>
+
+        <div id="admin-panel" class="admin-panel hidden">
+
+            <h2>Admin Panel</h2>
+
+            <input type="text" id="admin-title" placeholder="Book title" />
+
+            <input type="text" id="admin-author" placeholder="Author" />
+
+            <input type="number" id="admin-pages" placeholder="Pages" />
+
+            <input type="date" id="admin-date" placeholder="Published Date" />
+
+            <textarea id="admin-description" placeholder="Book description"></textarea>
+
+            <input type="file" id="admin-image" />
+
+            <button id="upload-book-btn">Upload Book 📚</button>
+
+        </div>
+
+
+
+    </div>
+
+    <div class="profile-page">
+
+        <!--  <h1 id="welcome-user">Welcome User</h1> -->
+
+        <div class="profile-boxes">
+
+            <!-- TO READ -->
+            <div class="profile-box">
+
+                <h2>To Read</h2>
+
+                <select id="sort-books">
+                    <option value="title">Sort by Title</option>
+                    <option value="author">Sort by Author</option>
+                </select>
+
+                <div id="saved-books"></div>
+
+            </div>
+
+            <!-- RATED -->
+            <div class="profile-box">
+
+                <h2>Rated Books</h2>
+
+                <select id="sort-rated-books">
+                    <option value="title">Sort by Title</option>
+                    <option value="author">Sort by Author</option>
+                    <option value="rating">Sort by Rating</option>
+                </select>
+
+                <div id="rated-books"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <footer class="footer">
+
+        <p>
+            © 2026 U-READ | Book Ducks Project
+        </p>
+
+        <p>
+            Built with HTML, CSS, JavaScript & Strapi
+        </p>
+
+    </footer>
+</body>
+
+</html>

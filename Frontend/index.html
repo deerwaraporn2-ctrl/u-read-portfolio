@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Ducks</title>
+
+  <!-- Axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="index.js" defer></script>
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <div id="navbar">
+    <h2 class="logo">U-READ</h2>
+
+    <div class="nav-center">
+      <div class="search-box">
+        <input type="text" placeholder="Search books..." id="search-input" />
+        <span>🔍</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+  
+      </div>
+    </div>
+
+    <div class="nav-actions">
+
+      <a id="login-link" href="login.html">
+        Login
+      </a>
+
+      <a id="profile-link" href="profile.html" class="hidden">
+        Profile
+      </a>
+
+      <a href="#" id="logout-btn" class="hidden">
+        Logout
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ================= BOOK GRID ================= -->
+  <section class="books-section">
+
+    <h1 class="books-title">All Books</h1>
+
+    <div id="books-container"></div>
+
+  </section>
+
+  <!-- ================= BOOK MODAL ================= -->
+
+  <div id="book-modal" class="hidden">
+
+    <div class="modal-content">
+
+      <button id="close-modal">
+        ✕
+      </button>
+
+      <img id="modal-image" />
+
+      <div class="modal-info">
+
+        <h2 id="modal-title"></h2>
+
+        <p id="modal-author"></p>
+
+        <p id="modal-pages"></p>
+
+        <p id="modal-date"></p>
+
+        <p id="modal-description"></p>
+
+        <button id="save-btn">
+          📚 Save to Read
+        </button>
+
+        <div id="modal-admin-actions"></div>
+
+        <p class="rating-text">
+          Click ⭐ to rate this book!
+        </p>
+        <div id="modal-rating"></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer class="footer">
+
+    <p>
+      © 2026 U-READ | Book Ducks Project
+    </p>
+
+    <p>
+      Built with HTML, CSS, JavaScript & Strapi
+    </p>
+
+  </footer>
+
+</body>
+
+</html>

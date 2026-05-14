@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="header">
+        <h2 id="user-info"></h2>
+
+
+    </div>
+
+
+    <div id="books-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+    <script>
+        async function checkUser() {
+            const token = localStorage.getItem("token");
+
+            if (!token) {
+                window.location.href = "index.html";
+                return;
+            }
+
+            try {
+                const res = await axios.get("http://localhost:1337/api/users/me", {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+
+                document.getElementById("user-info").innerText =
+                    "Logged in as: " + res.data.username;
+
+            } catch (err) {
+                localStorage.removeItem("token");
+                window.location.href = "index.html";
+            }
+        }
+
+        // 
+        async function loadBooks() {
+            try {
+                const res = await axios.get("http://localhost:1337/api/books?populate=*");
+
+                const books = res.data.data;
+                console.log(books);
+
+
+                const container = document.getElementById("books-container");
+
+                container.innerHTML = "";
+
+                books.forEach(book => {
+                    const b = book;
+
+                    const imageUrl = b.cover?.[0]?.url
+                        ? "http://localhost:1337" + b.cover[0].url
+                        : "";
+
+                    container.innerHTML += `
+                        <div class="book-card">
+                        <img src="${imageUrl}" alt="${b.title}" />
+                        <h3>${b.title}</h3>
+                        <p>${b.author}</p>
+                        <p>${b.pages ?? "No page info"} pages</p>
+                        </div>
+                    `;
+                });
+
+            } catch (err) {
+                console.error("Error loading books", err);
+            }
+        }
+
+        checkUser();
+        loadBooks(); //
+    </script>
+
+
+</div>
+
+</body>
+
+
+
+</html>
