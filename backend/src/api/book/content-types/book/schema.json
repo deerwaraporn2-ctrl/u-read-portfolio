@@ -34,18 +34,13 @@
       ]
     },
     "description": {
-      "type": "string"
+      "type": "text"
     },
     "savedByUsers": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "plugin::users-permissions.user",
       "mappedBy": "savedBooks"
-    },
-    "ratings": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::rating.rating"
     },
     "bookRatings": {
       "type": "relation",
