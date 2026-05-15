@@ -32,7 +32,7 @@
             }
 
             try {
-                const res = await axios.get("http://localhost:1337/api/users/me", {
+                const res = await axios.get("https://different-deer-6cff351cfd.strapiapp.com/api/users/me", {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -50,7 +50,7 @@
         // 
         async function loadBooks() {
             try {
-                const res = await axios.get("http://localhost:1337/api/books?populate=*");
+                const res = await axios.get("https://different-deer-6cff351cfd.strapiapp.com/api/books?populate=*");
 
                 const books = res.data.data;
                 console.log(books);
@@ -64,7 +64,7 @@
                     const b = book;
 
                     const imageUrl = b.cover?.[0]?.url
-                        ? "http://localhost:1337" + b.cover[0].url
+                        ? "https://different-deer-6cff351cfd.strapiapp.com" + b.cover[0].url
                         : "";
 
                     container.innerHTML += `
