@@ -6,10 +6,13 @@ async function handleLogin() {
   const password = document.getElementById("login-password").value;
 
   try {
-    const res = await axios.post("http://localhost:1337/api/auth/local", {
-      identifier,
-      password,
-    });
+    const res = await axios.post(
+      "https://different-deer-6cff351cfd.strapiapp.com/api/auth/local",
+      {
+        identifier,
+        password,
+      },
+    );
 
     localStorage.setItem("token", res.data.jwt);
 
@@ -34,11 +37,14 @@ async function handleRegister() {
   console.log(password);
 
   try {
-    await axios.post("http://localhost:1337/api/auth/local/register", {
-      username,
-      email,
-      password,
-    });
+    await axios.post(
+      "https://different-deer-6cff351cfd.strapiapp.com/api/auth/local/register",
+      {
+        username,
+        email,
+        password,
+      },
+    );
 
     alert("User created! Now login.");
 
@@ -70,11 +76,14 @@ async function checkUser() {
   }
 
   try {
-    await axios.get("http://localhost:1337/api/users/me", {
-      headers: {
-        Authorization: `Bearer ${token}`,
+    await axios.get(
+      "https://different-deer-6cff351cfd.strapiapp.com/api/users/me",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
-    });
+    );
   } catch (err) {
     // Token invalid or expired
     localStorage.removeItem("token");
@@ -100,7 +109,7 @@ async function loadProfile() {
 
     // Get user with saved books
     const res = await axios.get(
-      `http://localhost:1337/api/users/${user.id}?populate[savedBooks][populate]=cover`,
+      `https://different-deer-6cff351cfd.strapiapp.com/api/users/${user.id}?populate[savedBooks][populate]=cover`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -136,7 +145,7 @@ async function loadProfile() {
     ratedContainer.innerHTML = "";
 
     const ratingsRes = await axios.get(
-      "http://localhost:1337/api/ratings?populate[book][populate]=cover",
+      "https://different-deer-6cff351cfd.strapiapp.com/api/ratings?populate[book][populate]=cover",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -169,8 +178,8 @@ async function loadProfile() {
       if (!book) return;
 
       const image = book.cover?.[0]?.url
-        ? `http://localhost:1337${book.cover[0].url}`
-        : "https://placehold.co/80x110?text=No+Image";
+        ? book.cover[0].url
+        : "https://placehold.co/300x400?text=No+Image";
 
       const stars = "⭐".repeat(rating.value);
 
@@ -222,8 +231,8 @@ async function loadProfile() {
       console.log(book.cover);
 
       const image = book.cover?.[0]?.url
-        ? `http://localhost:1337${book.cover[0].url}`
-        : "https://placehold.co/80x110?text=No+Image";
+        ? book.cover[0].url
+        : "https://placehold.co/300x400?text=No+Image";
 
       const card = `
         <div class="saved-book-card">
@@ -314,7 +323,9 @@ function logout() {
 // ================= LOAD BOOKS =================
 async function loadBooks() {
   try {
-    const res = await axios.get("http://localhost:1337/api/books?populate=*");
+    const res = await axios.get(
+      "https://different-deer-6cff351cfd.strapiapp.com/api/books?populate=*",
+    );
 
     const books = res.data.data;
     allBooks = books;
@@ -324,8 +335,10 @@ async function loadBooks() {
     booksContainer.innerHTML = "";
 
     for (const book of books) {
+      console.log(book);
+
       const image = book.cover?.[0]?.url
-        ? `http://localhost:1337${book.cover[0].url}`
+        ? book.cover[0].url
         : "https://placehold.co/300x400?text=No+Image";
 
       const title = book.title || "No title";
@@ -335,7 +348,7 @@ async function loadBooks() {
 
       // LOAD RATINGS FOR THIS BOOK
       const ratingsRes = await axios.get(
-        `http://localhost:1337/api/ratings?filters[book][id][$eq]=${book.id}&populate=*`,
+        `https://different-deer-6cff351cfd.strapiapp.com/api/ratings?filters[book][id][$eq]=${book.id}&populate=*`,
       );
 
       const ratings = ratingsRes.data.data;
@@ -429,9 +442,7 @@ function openModal(book) {
   // STOP if modal does not exist (profile page)
   if (!modal) return;
 
-  const imageUrl = book.cover?.[0]?.url
-    ? "http://localhost:1337" + book.cover[0].url
-    : "";
+  const imageUrl = book.cover?.[0]?.url ? book.cover[0].url : "";
 
   document.getElementById("modal-image").src = imageUrl;
 
@@ -504,7 +515,7 @@ async function saveBook(event) {
   try {
     // Get current user with books
     const userRes = await axios.get(
-      `http://localhost:1337/api/users/${user.id}?populate=savedBooks`,
+      `https://different-deer-6cff351cfd.strapiapp.com/api/users/${user.id}?populate=savedBooks`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -524,7 +535,7 @@ async function saveBook(event) {
 
     // Update user
     await axios.put(
-      `http://localhost:1337/api/users/${user.id}`,
+      `https://different-deer-6cff351cfd.strapiapp.com/api/users/${user.id}`,
       {
         savedBooks: existingBooks,
       },
@@ -548,7 +559,7 @@ async function saveRating(bookId, ratingValue) {
 
   try {
     const res = await axios.post(
-      "http://localhost:1337/api/ratings",
+      "https://different-deer-6cff351cfd.strapiapp.com/api/ratings",
       {
         data: {
           value: Number(ratingValue),
@@ -601,7 +612,7 @@ async function createBook() {
       formData.append("files", imageFile);
 
       const uploadRes = await axios.post(
-        "http://localhost:1337/api/upload",
+        "https://different-deer-6cff351cfd.strapiapp.com/api/upload",
         formData,
         {
           headers: {
@@ -609,6 +620,7 @@ async function createBook() {
           },
         },
       );
+      console.log(uploadRes.data);
 
       uploadedImageId = uploadRes.data[0].id;
     }
@@ -616,7 +628,7 @@ async function createBook() {
     // ================= CREATE BOOK =================
 
     await axios.post(
-      "http://localhost:1337/api/books",
+      "https://different-deer-6cff351cfd.strapiapp.com/api/books",
       {
         data: {
           title,
@@ -636,7 +648,14 @@ async function createBook() {
 
     alert("Book uploaded 📚");
 
-    /* loadBooks(); */
+    document.getElementById("admin-title").value = "";
+    document.getElementById("admin-author").value = "";
+    document.getElementById("admin-pages").value = "";
+    document.getElementById("admin-date").value = "";
+    document.getElementById("admin-description").value = "";
+    document.getElementById("admin-image").value = "";
+
+    loadBooks();
   } catch (err) {
     console.log(err.response?.data);
 
@@ -656,11 +675,14 @@ async function deleteBook(documentId) {
   if (!confirmDelete) return;
 
   try {
-    await axios.delete(`http://localhost:1337/api/books/${documentId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
+    await axios.delete(
+      `https://different-deer-6cff351cfd.strapiapp.com/api/books/${documentId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
-    });
+    );
 
     alert("Book deleted 📚");
 
@@ -679,11 +701,14 @@ async function removeRating(ratingId) {
   const token = localStorage.getItem("token");
 
   try {
-    await axios.delete(`http://localhost:1337/api/ratings/${ratingId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
+    await axios.delete(
+      `https://different-deer-6cff351cfd.strapiapp.com/api/ratings/${ratingId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
-    });
+    );
 
     alert("Rating removed");
 
@@ -704,7 +729,7 @@ async function removeSavedBook(bookId) {
   try {
     // GET CURRENT USER
     const res = await axios.get(
-      `http://localhost:1337/api/users/${user.id}?populate=savedBooks`,
+      `https://different-deer-6cff351cfd.strapiapp.com/api/users/${user.id}?populate=savedBooks`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -719,7 +744,7 @@ async function removeSavedBook(bookId) {
 
     // UPDATE USER
     await axios.put(
-      `http://localhost:1337/api/users/${user.id}`,
+      `https://different-deer-6cff351cfd.strapiapp.com/api/users/${user.id}`,
       {
         savedBooks: updatedBooks,
       },
