@@ -450,14 +450,13 @@ export interface ApiBookBook extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.String;
+    description: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::book.book'> &
       Schema.Attribute.Private;
     pages: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     publishedDate: Schema.Attribute.Date;
-    ratings: Schema.Attribute.Relation<'oneToMany', 'api::rating.rating'>;
     savedByUsers: Schema.Attribute.Relation<
       'manyToMany',
       'plugin::users-permissions.user'
