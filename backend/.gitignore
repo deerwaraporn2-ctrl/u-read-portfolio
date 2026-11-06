@@ -128,3 +128,9 @@ dist
 build
 .strapi-updater.json
 .strapi-cloud.json
+
+# Local database and backups (contain user data)
+.tmp/
+*.tar.gz
+export_*
+transfer_*

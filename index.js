@@ -1,3 +1,6 @@
+// Backend address. Change only this line when the backend moves.
+const API_URL = "https://different-deer-6cff351cfd.strapiapp.com";
+
 let allBooks = [];
 
 // ================= LOGIN =================
@@ -7,7 +10,7 @@ async function handleLogin() {
 
   try {
     const res = await axios.post(
-      "https://different-deer-6cff351cfd.strapiapp.com/api/auth/local",
+      API_URL + "/api/auth/local",
       {
         identifier,
         password,
@@ -38,7 +41,7 @@ async function handleRegister() {
 
   try {
     await axios.post(
-      "https://different-deer-6cff351cfd.strapiapp.com/api/auth/local/register",
+      API_URL + "/api/auth/local/register",
       {
         username,
         email,
@@ -77,7 +80,7 @@ async function checkUser() {
 
   try {
     await axios.get(
-      "https://different-deer-6cff351cfd.strapiapp.com/api/users/me",
+      API_URL + "/api/users/me",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -109,7 +112,7 @@ async function loadProfile() {
 
     // Get user with saved books
     const res = await axios.get(
-      `https://different-deer-6cff351cfd.strapiapp.com/api/users/${user.id}?populate[savedBooks][populate]=cover`,
+      API_URL + `/api/users/${user.id}?populate[savedBooks][populate]=cover`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -145,7 +148,7 @@ async function loadProfile() {
     ratedContainer.innerHTML = "";
 
     const ratingsRes = await axios.get(
-      "https://different-deer-6cff351cfd.strapiapp.com/api/ratings?populate[book][populate]=cover",
+      API_URL + "/api/ratings?populate[book][populate]=cover",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -324,7 +327,7 @@ function logout() {
 async function loadBooks() {
   try {
     const res = await axios.get(
-      "https://different-deer-6cff351cfd.strapiapp.com/api/books?populate=*",
+      API_URL + "/api/books?populate=*",
     );
 
     const books = res.data.data;
@@ -348,7 +351,7 @@ async function loadBooks() {
 
       // LOAD RATINGS FOR THIS BOOK
       const ratingsRes = await axios.get(
-        `https://different-deer-6cff351cfd.strapiapp.com/api/ratings?filters[book][id][$eq]=${book.id}&populate=*`,
+        API_URL + `/api/ratings?filters[book][id][$eq]=${book.id}&populate=*`,
       );
 
       const ratings = ratingsRes.data.data;
@@ -515,7 +518,7 @@ async function saveBook(event) {
   try {
     // Get current user with books
     const userRes = await axios.get(
-      `https://different-deer-6cff351cfd.strapiapp.com/api/users/${user.id}?populate=savedBooks`,
+      API_URL + `/api/users/${user.id}?populate=savedBooks`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -535,7 +538,7 @@ async function saveBook(event) {
 
     // Update user
     await axios.put(
-      `https://different-deer-6cff351cfd.strapiapp.com/api/users/${user.id}`,
+      API_URL + `/api/users/${user.id}`,
       {
         savedBooks: existingBooks,
       },
@@ -559,7 +562,7 @@ async function saveRating(bookId, ratingValue) {
 
   try {
     const res = await axios.post(
-      "https://different-deer-6cff351cfd.strapiapp.com/api/ratings",
+      API_URL + "/api/ratings",
       {
         data: {
           value: Number(ratingValue),
@@ -612,7 +615,7 @@ async function createBook() {
       formData.append("files", imageFile);
 
       const uploadRes = await axios.post(
-        "https://different-deer-6cff351cfd.strapiapp.com/api/upload",
+        API_URL + "/api/upload",
         formData,
         {
           headers: {
@@ -628,7 +631,7 @@ async function createBook() {
     // ================= CREATE BOOK =================
 
     await axios.post(
-      "https://different-deer-6cff351cfd.strapiapp.com/api/books",
+      API_URL + "/api/books",
       {
         data: {
           title,
@@ -676,7 +679,7 @@ async function deleteBook(documentId) {
 
   try {
     await axios.delete(
-      `https://different-deer-6cff351cfd.strapiapp.com/api/books/${documentId}`,
+      API_URL + `/api/books/${documentId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -702,7 +705,7 @@ async function removeRating(ratingId) {
 
   try {
     await axios.delete(
-      `https://different-deer-6cff351cfd.strapiapp.com/api/ratings/${ratingId}`,
+      API_URL + `/api/ratings/${ratingId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -729,7 +732,7 @@ async function removeSavedBook(bookId) {
   try {
     // GET CURRENT USER
     const res = await axios.get(
-      `https://different-deer-6cff351cfd.strapiapp.com/api/users/${user.id}?populate=savedBooks`,
+      API_URL + `/api/users/${user.id}?populate=savedBooks`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -744,7 +747,7 @@ async function removeSavedBook(bookId) {
 
     // UPDATE USER
     await axios.put(
-      `https://different-deer-6cff351cfd.strapiapp.com/api/users/${user.id}`,
+      API_URL + `/api/users/${user.id}`,
       {
         savedBooks: updatedBooks,
       },
